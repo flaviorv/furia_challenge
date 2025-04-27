@@ -1,5 +1,6 @@
 package com.furia.chat.controller;
 
+import com.furia.chat.dto.FanDTO;
 import com.furia.chat.model.Fan;
 import com.furia.chat.service.FanService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,13 +14,13 @@ public class FanController {
     private FanService fanService;
 
     @GetMapping
-    public ResponseEntity<Iterable<Fan>> getAll(){
+    public ResponseEntity<Iterable<FanDTO>> getAll(){
         return ResponseEntity.ok(fanService.getAll());
     }
 
     @PostMapping
-    public ResponseEntity<Fan> save(@RequestBody Fan fan){
-        Fan _fan = fanService.save(fan);
+    public ResponseEntity<FanDTO> save(@RequestBody Fan fan){
+        FanDTO _fan = fanService.save(fan);
         if (_fan != null) {
             return ResponseEntity.status(201).body(_fan);
         } else {
@@ -28,8 +29,8 @@ public class FanController {
     }
 
     @PutMapping
-    public ResponseEntity<Fan> edit(@RequestBody Fan fan){
-        Fan _fan = fanService.edit(fan);
+    public ResponseEntity<FanDTO> edit(@RequestBody Fan fan){
+        FanDTO _fan = fanService.edit(fan);
         if (_fan != null) {
             return ResponseEntity.ok(_fan);
         } else {
@@ -38,10 +39,11 @@ public class FanController {
     }
 
     @DeleteMapping
-    public ResponseEntity<Fan> delete(@RequestBody String uid){
-        Fan fan = fanService.delete(uid);
-        if (fan != null) {
-            return ResponseEntity.ok(fan);
+    public ResponseEntity<FanDTO> delete(@RequestBody Fan fan){
+        String uid = fan.getFirebaseUid();
+        FanDTO _fan = fanService.delete(uid);
+        if (_fan != null) {
+            return ResponseEntity.ok(_fan);
         } else {
             return ResponseEntity.notFound().build();
         }
