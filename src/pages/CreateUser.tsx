@@ -1,5 +1,8 @@
 import { useForm, SubmitHandler } from "react-hook-form"
-import React from "react"
+import React, {useEffect} from "react"
+import "./CreateUser.css"
+import wallpaper from '../images/wallpaper1.png'
+import Navbar from "../components/Navbar.tsx"
 
 type Inputs = {
     userName: string,
@@ -8,7 +11,12 @@ type Inputs = {
     passwordConfirmation: string
 }
 
+
 export default function CreateUser() {
+    useEffect(()=>{
+        document.title = "Fúria - Cadastro"
+    },[])
+
     const {
         register,
         handleSubmit
@@ -16,14 +24,21 @@ export default function CreateUser() {
     const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data)
 
     return (
-        <div>
-            <h1>Nova Conta</h1>
-            <form onSubmit={handleSubmit(onSubmit)}>
-                <input placeholder="Username" {...register("userName")}/> 
-                <input placeholder="Email" {...register("email")}/> 
-                <input placeholder="Password" {...register("password")}/>
-                <input placeholder="Confirme o password" {...register("passwordConfirmation")}/>
+        <div className="signup-page">
+            <Navbar/>
+            <img id="signup-img-background" src={wallpaper} alt="Imagem de fundo com arte da Fúria" />
+            
+            <form id="signup-form" onSubmit={handleSubmit(onSubmit)}>
+                <div id="signup-form-div">
+                    <h3 className="signup-title">Nova Conta</h3>
+                    <input className="signup-input" type="text" placeholder="Username" {...register("userName")}/> 
+                    <input className="signup-input" type="email" placeholder="Email" {...register("email")}/> 
+                    <input className="signup-input" type="password" placeholder="Password" {...register("password")}/>
+                    <input className="signup-input" type="password" placeholder="Confirme o password" {...register("passwordConfirmation")}/>
+                    <input className="signup-submit" type="submit" value={"ENVIAR"}/>
+                </div>
             </form>
+            
         </div>
         
     )

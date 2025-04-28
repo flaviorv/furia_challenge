@@ -1,0 +1,21 @@
+#navbar-component {
+    width: 100%;
+    height: 17px;
+    background-color: black;
+    zoom: 4;
+    display: flex;
+
+}
+
+#navbar-furia-img {
+    max-height: 7px;
+    align-self: center;
+    margin-left: 6px;
+}
+
+#navbar-club-text {
+    color: aliceblue;
+    font-size: 5px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    align-self: flex-end;
+}
