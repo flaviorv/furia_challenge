@@ -1,18 +1,9 @@
-.signup-page {
+#signup-form {
     display: flex;
-    flex-direction: column;
-    padding: 0px;
-    margin: 0px;
     width: 100%;
-    height: 100vh;
-}
-
-#signup-img-background {
-    position: absolute;
-    min-width: 100%;
-    min-height: 100%;
-    opacity: 0.7;
-    z-index: -1;
+    height: 100%;
+    justify-content: center;
+    padding-top: 100px;
 }
 
 .signup-title {
@@ -23,6 +14,7 @@
 }
 
 #signup-form-div {
+    position: fixed;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -39,28 +31,22 @@
 .signup-input {
     margin-bottom: 20px;
     font-size: 1.1em;
+    background-color: lightslategray;
 }
 
 .signup-submit {
-    background-color: black;
+    background-color: #222;
     color: beige;
     margin-top: 10px;
     margin-bottom: 10px;
     font-size: 1em;
+    border-style: none;
+    padding: 4px 10px;
 }
 
 .signup-submit:hover {
-    background-color: #222;
+    background-color: #333;
     color: white;
     cursor: pointer;
+    
 }
-
-#signup-form {
-    display: flex;
-    width: 100%;
-    height: 100%;
-    justify-content: center;
-
-}
-
-
