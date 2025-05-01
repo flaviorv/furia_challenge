@@ -1,5 +1,5 @@
 INSERT INTO FAN (USERNAME, EMAIL, PASSWORD, PROFILE_PICTURE, BIO, ROLE_TYPE) VALUES
-('furioso1', 'f1@gmail.com', '$2a$13$JOFmuJyiSmyd4.Bd.07UHOv3znGiGkw1ZIRyqwigdWkhcT0UtG1Z6', null, null, 'FAN_ROLE');
+('furioso1', 'f1@gmail.com', '$2a$13$JOFmuJyiSmyd4.Bd.07UHOv3znGiGkw1ZIRyqwigdWkhcT0UtG1Z6', null, null, 'ROLE_ADMIN');
 
 INSERT INTO FAN (USERNAME, EMAIL, PASSWORD, PROFILE_PICTURE, BIO, ROLE_TYPE) VALUES
-('furioso2', 'f2@gmail.com', '$2a$13$JOFmuJyiSmyd4.Bd.07UHOv3znGiGkw1ZIRyqwigdWkhcT0UtG1Z6', null, null, 'ADMIN_ROLE');
+('furioso2', 'f2@gmail.com', '$2a$13$JOFmuJyiSmyd4.Bd.07UHOv3znGiGkw1ZIRyqwigdWkhcT0UtG1Z6', null, null, 'ROLE_ADMIN');

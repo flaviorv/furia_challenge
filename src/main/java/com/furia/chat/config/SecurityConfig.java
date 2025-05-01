@@ -8,10 +8,8 @@ import org.springframework.security.authentication.dao.DaoAuthenticationProvider
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
@@ -24,8 +22,13 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http
-                .authorizeHttpRequests(request -> request.anyRequest().authenticated())
-                .csrf(csrf -> csrf.ignoringRequestMatchers("/**"))
+                .csrf(csrf -> csrf.disable())
+                .authorizeHttpRequests(request -> request
+                    .requestMatchers("/h2/**", "/register").permitAll()
+                    .requestMatchers("/fans").hasRole("ADMIN")
+                    .requestMatchers("/edit").hasRole("FAN")
+                    .requestMatchers("/delete-account").hasAnyRole("ADMIN", "FAN")
+                    .anyRequest().authenticated())
                 .headers(headers -> headers.frameOptions(f -> f.sameOrigin()))
                 .httpBasic(Customizer.withDefaults())
                 .build();
@@ -34,7 +37,7 @@ public class SecurityConfig {
     @Bean
     public AuthenticationProvider authenticationProvider() {
         DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
-        provider.setPasswordEncoder(new BCryptPasswordEncoder(12));
+        provider.setPasswordEncoder(new BCryptPasswordEncoder(13));
         provider.setUserDetailsService(userDetailsService);
         return provider;
     }

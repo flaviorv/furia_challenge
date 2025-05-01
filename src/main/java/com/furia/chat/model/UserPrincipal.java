@@ -18,8 +18,7 @@ public class UserPrincipal implements UserDetails {
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return List.of(
-                new SimpleGrantedAuthority("FAN_ROLE"),
-                new SimpleGrantedAuthority("ADMIN_ROLE")
+                new SimpleGrantedAuthority(fan.getRoleType())
         );
     }
 
@@ -35,7 +34,7 @@ public class UserPrincipal implements UserDetails {
 
     @Override
     public boolean isAccountNonExpired() {
-        return UserDetails.super.isAccountNonExpired();
+        return true;
     }
 
     @Override

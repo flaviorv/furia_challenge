@@ -8,20 +8,19 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/")
 public class FanController {
 
     @Autowired
     private FanService fanService;
 
-    @GetMapping
+    @GetMapping("/fans")
     public ResponseEntity<Iterable<FanDTO>> getAll() {
         return ResponseEntity.ok(fanService.getAll());
     }
 
-    @PostMapping
-    public ResponseEntity<FanDTO> save(@RequestBody Fan fan){
-        FanDTO _fan = fanService.save(fan);
+    @PostMapping("/register")
+    public ResponseEntity<FanDTO> register(@RequestBody Fan fan){
+        FanDTO _fan = fanService.register(fan);
         if (_fan != null) {
             return ResponseEntity.status(201).body(_fan);
         } else {
@@ -29,7 +28,7 @@ public class FanController {
         }
     }
 
-    @PutMapping
+    @PutMapping("/edit")
     public ResponseEntity<FanDTO> edit(@RequestBody Fan fan){
         FanDTO _fan = fanService.edit(fan);
         if (_fan != null) {
@@ -39,7 +38,7 @@ public class FanController {
         }
     }
 
-    @DeleteMapping
+    @DeleteMapping("/delete-account")
     public ResponseEntity<FanDTO> delete(@RequestBody Fan fan){
         String username = fan.getUsername();
         FanDTO _fan = fanService.delete(username);

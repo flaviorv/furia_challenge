@@ -18,7 +18,7 @@ public class FanService {
 
     private BCryptPasswordEncoder encoder = new BCryptPasswordEncoder(13);
 
-    public FanDTO save(Fan fan){
+    public FanDTO register(Fan fan){
         Optional<Fan> found = fanRepository.findById(fan.getUsername());
         if (found.isPresent()) {
             System.out.println("Existent username");
@@ -26,7 +26,7 @@ public class FanService {
         }
         if (fan.getPassword().length() >= 6){
             fan.setPassword(encoder.encode(fan.getPassword()));
-            fan.setRoleType("FAN_ROLE");
+            fan.setRoleType("ROLE_FAN");
             fanRepository.save(fan);
             System.out.println("Fan "+fan.getUsername()+" saved");
             return FanMapper.fanToFanDTO(fan);
