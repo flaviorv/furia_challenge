@@ -3,11 +3,14 @@ package com.furia.chat.config;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.Customizer;
+import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
@@ -24,13 +27,15 @@ public class SecurityConfig {
         return http
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(request -> request
-                    .requestMatchers("/h2/**", "/register").permitAll()
-                    .requestMatchers("/fans").hasRole("ADMIN")
-                    .requestMatchers("/edit").hasRole("FAN")
-                    .requestMatchers("/delete-account").hasAnyRole("ADMIN", "FAN")
-                    .anyRequest().authenticated())
+                        .requestMatchers("/register", "/login").permitAll()
+                        .requestMatchers("/h2/**").hasRole("ADMIN")
+                        .requestMatchers("/fans").hasRole("ADMIN")
+                        .requestMatchers("/edit").hasRole("FAN")
+                        .requestMatchers("/delete-account").hasAnyRole("ADMIN", "FAN")
+                        .anyRequest().authenticated())
                 .headers(headers -> headers.frameOptions(f -> f.sameOrigin()))
                 .httpBasic(Customizer.withDefaults())
+                .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .build();
     }
 
@@ -40,6 +45,11 @@ public class SecurityConfig {
         provider.setPasswordEncoder(new BCryptPasswordEncoder(13));
         provider.setUserDetailsService(userDetailsService);
         return provider;
+    }
+
+    @Bean
+    public AuthenticationManager authenticationManager(AuthenticationConfiguration config) throws Exception {
+        return config.getAuthenticationManager();
     }
 
 }

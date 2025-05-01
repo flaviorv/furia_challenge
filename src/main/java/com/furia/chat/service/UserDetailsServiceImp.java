@@ -17,11 +17,11 @@ public class UserDetailsServiceImp implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         Fan fan = fanService.findByUsername(username);
-
         if (fan == null) {
             System.out.println("Fan not found");
             throw new UsernameNotFoundException("Fan not found");
         }
+        System.out.println(fan.getUsername()+" logged in");
         return new UserPrincipal(fan);
     }
 

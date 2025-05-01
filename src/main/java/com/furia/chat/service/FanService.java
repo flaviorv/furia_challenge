@@ -35,7 +35,7 @@ public class FanService {
         return null;
     }
 
-    public Fan findByUsername(String username){
+    protected Fan findByUsername(String username){
         Optional<Fan> fan = fanRepository.findById(username);
         if (fan.isPresent()){
             return fan.get();
@@ -75,6 +75,7 @@ public class FanService {
           return null;
         }
     }
+
 }
 
 

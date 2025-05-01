@@ -5,6 +5,9 @@ import com.furia.chat.model.Fan;
 import com.furia.chat.service.FanService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -12,6 +15,9 @@ public class FanController {
 
     @Autowired
     private FanService fanService;
+
+    @Autowired
+    private AuthenticationManager authenticationManager;
 
     @GetMapping("/fans")
     public ResponseEntity<Iterable<FanDTO>> getAll() {
@@ -26,6 +32,15 @@ public class FanController {
         } else {
             return ResponseEntity.badRequest().build();
         }
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity<String> login(@RequestBody Fan fan){
+        Authentication auth = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(fan.getUsername(), fan.getPassword()));
+        if (auth.isAuthenticated()) {
+            return ResponseEntity.ok("Login Success");
+        }
+        return ResponseEntity.status(401).build();
     }
 
     @PutMapping("/edit")
