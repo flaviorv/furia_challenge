@@ -6,9 +6,8 @@ import lombok.NoArgsConstructor;
 
 @AllArgsConstructor @NoArgsConstructor @Data
 public class FanDTO {
-    private String name;
-    private String email;
     private String username;
-    private String profilePictureUrl;
+    private String email;
+    private String profilePicture;
     private String bio;
 }

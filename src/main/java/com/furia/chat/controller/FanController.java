@@ -10,11 +10,12 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/")
 public class FanController {
+
     @Autowired
     private FanService fanService;
 
     @GetMapping
-    public ResponseEntity<Iterable<FanDTO>> getAll(){
+    public ResponseEntity<Iterable<FanDTO>> getAll() {
         return ResponseEntity.ok(fanService.getAll());
     }
 
@@ -40,8 +41,8 @@ public class FanController {
 
     @DeleteMapping
     public ResponseEntity<FanDTO> delete(@RequestBody Fan fan){
-        String uid = fan.getFirebaseUid();
-        FanDTO _fan = fanService.delete(uid);
+        String username = fan.getUsername();
+        FanDTO _fan = fanService.delete(username);
         if (_fan != null) {
             return ResponseEntity.ok(_fan);
         } else {

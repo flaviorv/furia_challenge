@@ -5,11 +5,10 @@ import com.furia.chat.model.Fan;
 
 public class FanMapper {
     public static FanDTO fanToFanDTO(Fan fan){
-        return new FanDTO(
-                fan.getName(),
-                fan.getEmail(),
+        return new FanDTO (
                 fan.getUsername(),
-                fan.getProfilePictureUrl(),
+                fan.getEmail(),
+                fan.getProfilePicture(),
                 fan.getBio()
         );
     }
