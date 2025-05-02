@@ -22,7 +22,7 @@ public class FanService {
 
     private BCryptPasswordEncoder encoder = new BCryptPasswordEncoder(13);
 
-    public FanDTO register(Fan fan){
+    public FanDTO register(Fan fan) throws EntityExistsException, IllegalArgumentException {
         Optional<Fan> found = fanRepository.findById(fan.getUsername());
         if (found.isPresent()) {
             throw new EntityExistsException("This fan already exists");

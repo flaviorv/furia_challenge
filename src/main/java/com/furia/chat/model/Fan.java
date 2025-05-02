@@ -25,4 +25,10 @@ public class Fan {
     private String bio;
     @Column(name = "ROLE_TYPE")
     private String roleType;
+
+    public Fan(String username, String email, String password) {
+        this.username = username;
+        this.email = email;
+        this.password = password;
+    }
 }
