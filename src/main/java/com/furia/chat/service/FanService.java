@@ -35,9 +35,7 @@ public class FanService {
         fan.setPassword(encoder.encode(fan.getPassword()));
         fan.setRoleType("ROLE_FAN");
         fanRepository.save(fan);
-        System.out.println("Fan "+fan.getUsername()+" saved");
-        return FanMapper.fanToFanDTO(fan);
-
+        return FanMapper.toFanDTO(fan);
     }
 
     protected Fan findByUsername(String username){
@@ -52,7 +50,7 @@ public class FanService {
         Iterable<Fan> fans = fanRepository.findAll();
         List<FanDTO> fanDTOs = new ArrayList<>();
         for (Fan fan : fans) {
-            fanDTOs.add(FanMapper.fanToFanDTO(fan));
+            fanDTOs.add(FanMapper.toFanDTO(fan));
         }
         return fanDTOs;
     }
@@ -70,7 +68,7 @@ public class FanService {
             if (fan.getProfilePicture() != null) _fan.get().setProfilePicture(fan.getProfilePicture());
             if (fan.getBio() != null) _fan.get().setBio(fan.getBio());
             fanRepository.save(_fan.get());
-            return _fan.map(FanMapper::fanToFanDTO).get();
+            return _fan.map(FanMapper::toFanDTO).get();
         }
 
         throw new ClassNotFoundException("Fan not found");
@@ -89,7 +87,7 @@ public class FanService {
         Optional<Fan> fan = fanRepository.findById(username);
         if (fan.isPresent()) {
             fanRepository.deleteById(username);
-            return FanMapper.fanToFanDTO(fan.get());
+            return FanMapper.toFanDTO(fan.get());
         }
 
         throw new ClassNotFoundException("Fan not found");

@@ -6,5 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface FanRepository extends CrudRepository<Fan, String> {
-    Fan findByUsername(String username);
+
 }

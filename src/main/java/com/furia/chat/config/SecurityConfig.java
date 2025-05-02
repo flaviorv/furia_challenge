@@ -34,8 +34,6 @@ public class SecurityConfig {
                         .requestMatchers("/register", "/login").permitAll()
                         .requestMatchers("/h2/**").hasRole("ADMIN")
                         .requestMatchers("/fans").hasRole("ADMIN")
-                        .requestMatchers("/edit").hasAnyRole("FAN", "ADMIN")
-                        .requestMatchers("/delete-account").hasAnyRole("ADMIN", "FAN")
                         .anyRequest().authenticated())
                 .headers(headers -> headers.frameOptions(f -> f.sameOrigin()))
                 .httpBasic(Customizer.withDefaults())
