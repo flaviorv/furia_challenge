@@ -1,6 +1,5 @@
 package com.furia.chat.service;
 
-import com.furia.chat.dto.FanDTO;
 import com.furia.chat.model.Fan;
 import com.furia.chat.model.UserPrincipal;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +20,6 @@ public class UserDetailsServiceImp implements UserDetailsService {
             System.out.println("Fan not found");
             throw new UsernameNotFoundException("Fan not found");
         }
-        System.out.println(fan.getUsername()+" logged in");
         return new UserPrincipal(fan);
     }
 

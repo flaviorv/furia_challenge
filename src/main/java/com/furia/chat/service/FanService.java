@@ -4,9 +4,13 @@ import com.furia.chat.dto.FanDTO;
 import com.furia.chat.mapper.FanMapper;
 import com.furia.chat.model.Fan;
 import com.furia.chat.repository.FanRepository;
+import jakarta.persistence.EntityExistsException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import java.nio.file.AccessDeniedException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -21,18 +25,19 @@ public class FanService {
     public FanDTO register(Fan fan){
         Optional<Fan> found = fanRepository.findById(fan.getUsername());
         if (found.isPresent()) {
-            System.out.println("Existent username");
-            return null;
+            throw new EntityExistsException("This fan already exists");
         }
-        if (fan.getPassword().length() >= 6){
-            fan.setPassword(encoder.encode(fan.getPassword()));
-            fan.setRoleType("ROLE_FAN");
-            fanRepository.save(fan);
-            System.out.println("Fan "+fan.getUsername()+" saved");
-            return FanMapper.fanToFanDTO(fan);
+
+        if (fan.getPassword().length() < 6){
+            throw new IllegalArgumentException("Password must be at least 6 characters");
         }
-        System.out.println("Password should be more than 6 characters");
-        return null;
+
+        fan.setPassword(encoder.encode(fan.getPassword()));
+        fan.setRoleType("ROLE_FAN");
+        fanRepository.save(fan);
+        System.out.println("Fan "+fan.getUsername()+" saved");
+        return FanMapper.fanToFanDTO(fan);
+
     }
 
     protected Fan findByUsername(String username){
@@ -52,7 +57,11 @@ public class FanService {
         return fanDTOs;
     }
 
-    public FanDTO edit(Fan fan) {
+    public FanDTO edit(Fan fan) throws ClassNotFoundException, AccessDeniedException {
+        if (isUserUnauthorizedToModify(fan.getUsername())) {
+            throw new AccessDeniedException("Not authorized to edit this fan");
+        }
+
         Optional<Fan> _fan = fanRepository.findById(fan.getUsername());
         if (_fan.isPresent()){
             if (fan.getEmail() != null) _fan.get().setEmail(fan.getEmail());
@@ -63,17 +72,34 @@ public class FanService {
             fanRepository.save(_fan.get());
             return _fan.map(FanMapper::fanToFanDTO).get();
         }
-        return null;
+
+        throw new ClassNotFoundException("Fan not found");
     }
 
-    public FanDTO delete(String username){
+    private boolean isUserUnauthorizedToModify(String targetUsername) {
+        String loggedUsername = SecurityContextHolder.getContext().getAuthentication().getName();
+        return !loggedUsername.equals(targetUsername);
+    }
+
+    public FanDTO delete(String username) throws ClassNotFoundException, AccessDeniedException {
+        if (isUserUnauthorizedToDelete(username)) {
+            throw new AccessDeniedException("Not authorized to delete this fan");
+        }
+
         Optional<Fan> fan = fanRepository.findById(username);
         if (fan.isPresent()) {
             fanRepository.deleteById(username);
             return FanMapper.fanToFanDTO(fan.get());
-        } else {
-          return null;
         }
+
+        throw new ClassNotFoundException("Fan not found");
+    }
+
+    private boolean isUserUnauthorizedToDelete(String targetUsername) {
+        Authentication logged = SecurityContextHolder.getContext().getAuthentication();
+        String loggedUsername = logged.getName();
+        String role = logged.getAuthorities().iterator().next().getAuthority();
+        return !loggedUsername.equals(targetUsername) && !role.equals("ROLE_ADMIN");
     }
 
 }
