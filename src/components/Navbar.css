@@ -12,24 +12,25 @@
     z-index: 2;
 }
 
-#navbar-furia-img {
-    height: 25px;
-    margin-left: 25px;
+#navbar-middle {
+    position: fixed;
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    align-self: center;
+    z-index: -1;
 }
 
-#navbar-club-text {
-    display: flex;
-    color: aliceblue;
-    font-size: 1.3em;
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    margin-top: 28px;
+#navbar-furia-img {
+    border-radius: 20px;
+    width: 100px;
 }
 
 #navbar-right a {
     text-decoration: none;
     margin-right: 30px;
     color: wheat;
-    font-family: 'Times New Roman', Times, serif;
 }
 
 #navbar-right p:hover, #navbar-right a:hover {
@@ -37,25 +38,24 @@
     cursor: pointer;
 }
 
-#navbar-left {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
+#navbar-home-icon {
+    width: 40px;
+    margin-left: 30px;
+    border-radius: 5px;
 }
 
-#navbar-left:hover {
+#navbar-home-icon:hover{
     cursor: pointer;
 }
 
 #navbar-right {
     display: flex;
     align-items: center;
-    font-size: 1em;
+    font-size: 1.2em;
     text-decoration: none;
     color: wheat;
-    font-weight: bolder;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight:bolder;
+    font-family: Bebas;
     margin-right: 30px;
     gap: 40px;
 }
