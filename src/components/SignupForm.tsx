@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useForm, SubmitHandler } from "react-hook-form"
 import './ResAuthForm.css'
 import axios from 'axios'
@@ -16,6 +16,9 @@ type Prop = {
 }
 
 export default function SignupForm({changeComponent}: Prop) {
+
+    const [isVisible, setVisibility] = useState(false)
+
     async function createNewUser(userData: Inputs) {
         try {
             await console.log(userData)
@@ -23,6 +26,7 @@ export default function SignupForm({changeComponent}: Prop) {
             changeComponent(ComponentType.Login)
         } catch(error) {
             console.log(error)
+            setVisibility(true)
         }
     }
 
@@ -41,6 +45,7 @@ export default function SignupForm({changeComponent}: Prop) {
                 <input className="res-auth-input" type="password" placeholder="Password" {...register("password")}/>
                 <input className="res-auth-input" type="password" placeholder="Confirme o password" {...register("passwordConfirmation")}/>
                 <input className="res-auth-submit" type="submit" value={"ENVIAR"}/>
+                <b className="res-auth-error" style={{color: "red", visibility: isVisible ? "visible" : "collapse"}}>Dados inválidos</b>
             </div>
         </form>
     )

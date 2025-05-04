@@ -52,3 +52,8 @@
     background-color: #333;
     cursor: pointer; 
 }
+
+.res-auth-submit:active {
+    background-color: #9fa59f;
+    transform: scale(0.96);
+}

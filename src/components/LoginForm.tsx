@@ -18,7 +18,7 @@ export default function LoginForm() {
             const response = await axios.post("http://localhost:8080/login", userData)
             const token = response.data
             localStorage.setItem("furia-jwt", token)
-            navigate("/chat")
+            navigate("/fan-page")
        
         } catch (error) {
             setVisibility(true)
