@@ -1,27 +1,42 @@
 import React from 'react'
 import { useForm, SubmitHandler } from "react-hook-form"
 import './ResAuthForm.css'
+import axios from 'axios'
+import { ComponentType } from '../utils.ts'
 
 type Inputs = {
-    userName: string,
+    username: string,
     email: string,
     password: string,
     passwordConfirmation: string
 }
 
-export default function SignupForm() {
-   
+type Prop = {
+    changeComponent: (component: ComponentType) => void
+}
+
+export default function SignupForm({changeComponent}: Prop) {
+    async function createNewUser(userData: Inputs) {
+        try {
+            await console.log(userData)
+            await axios.post("http://localhost:8080/register", userData)
+            changeComponent(ComponentType.Login)
+        } catch(error) {
+            console.log(error)
+        }
+    }
+
     const {
         register,
         handleSubmit
     } = useForm<Inputs>()
-    const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data)
+    const onSubmit: SubmitHandler<Inputs> = (data) => createNewUser(data)
 
     return (
         <form className="res-auth-form" onSubmit={handleSubmit(onSubmit)}>
             <div className="res-auth-div">
                 <h3 className="res-auth-title">Nova Conta</h3>
-                <input className="res-auth-input" type="text" placeholder="Username" {...register("userName")}/> 
+                <input className="res-auth-input" type="text" placeholder="Username" {...register("username")}/> 
                 <input className="res-auth-input" type="email" placeholder="Email" {...register("email")}/> 
                 <input className="res-auth-input" type="password" placeholder="Password" {...register("password")}/>
                 <input className="res-auth-input" type="password" placeholder="Confirme o password" {...register("passwordConfirmation")}/>

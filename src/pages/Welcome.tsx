@@ -5,19 +5,19 @@ import Navbar from "../components/Navbar.tsx"
 import Footer from "../components/Footer.tsx"
 import SignupForm from "../components/SignupForm.tsx"
 import LoginForm from "../components/LoginForm.tsx"
-import { PageType } from "../components/Navbar.tsx"
+import { ComponentType } from "../utils.ts"
 
 export default function Welcome() {
     
-    const [page, setPage] = useState(PageType.Signup);
+    const [component, setComponent] = useState(ComponentType.Welcome);
 
     return (
         <div id="welcome-page"> 
-            <Navbar changePage={setPage} currentPage={page} />
+            <Navbar changeComponent={setComponent} currentComponent={component} />
             <img id="welcom-img-background" src={wallpaper} alt="Imagem de fundo com arte da Fúria" />
             <div id="welcome-content">
-                {page === PageType.Signup ? <SignupForm /> : null}
-                {page === PageType.Login ? <LoginForm /> : null}
+                {component === ComponentType.Signup ? <SignupForm changeComponent={setComponent} /> : null}
+                {component === ComponentType.Login ? <LoginForm /> : null}
             </div>
             <Footer/>
         </div>
