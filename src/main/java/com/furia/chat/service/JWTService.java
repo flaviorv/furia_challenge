@@ -22,7 +22,7 @@ public class JWTService {
     public String generateToken(Authentication auth) {
         UserPrincipal user = (UserPrincipal) auth.getPrincipal();
         Map<String, Object> claims = new HashMap<>();
-        claims.put(user.getUsername(), user.getAuthorities());
+        claims.put("roles", user.getAuthorities());
 
         return Jwts.builder()
                 .claims()
