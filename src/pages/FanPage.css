@@ -6,7 +6,7 @@
     background-image: url("../assets/images/wallpaper4.png");
     gap: 20px;
     background-size: cover;
-    height: 300vh;
+    height: 100vh;
     overflow: scroll;
 }
 
@@ -21,7 +21,6 @@
     height: 200vh;
   }
   
-
 #fan-page-chat-box {
     position: fixed;
     right: 0;
@@ -44,8 +43,6 @@
     flex-direction: column;
     justify-content: start;
     align-items: start
-    
-
 }
 
 #fan-page-nav {
@@ -62,3 +59,46 @@
 #fan-page-furia-icon {
     height: 80px;
 }
+
+.fan-page-dropdown {
+    position: relative;
+    display: inline-block;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 1.3em;
+    user-select: none;
+  }
+  
+  .fan-page-username {
+    padding: 10px;
+  }
+  
+  .fan-page-dropdown-menu {
+    position: absolute;
+    left: 0;
+    top: 100%;
+    border: 2px solid #444;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    z-index: 2;
+  
+  }
+  
+  .fan-page-dropdown-button {
+    background: none;
+    color: black;
+    border: none;
+    padding: 8px 10px;
+    text-align: center;
+    cursor: pointer;
+    background-color: white;
+    font-family: Cinzel;
+    outline: 1.5px solid #a5a4a4;
+  }
+  
+  .fan-page-dropdown-button:hover {
+    background-color: #444;
+  }
+  

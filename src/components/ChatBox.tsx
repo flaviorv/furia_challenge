@@ -35,7 +35,6 @@ export default function ChatBox() {
                         return prevMessages
                     }
                 }
-                console.log("chamou")
                 return newMessages
             })
         } catch (error) {
