@@ -1,0 +1,64 @@
+#fan-page {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+    background-image: url("../assets/images/wallpaper4.png");
+    gap: 20px;
+    background-size: cover;
+    height: 300vh;
+    overflow: scroll;
+}
+
+#fan-page {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+  
+  #fan-page-feed {
+    flex: 1;
+    height: 200vh;
+  }
+  
+
+#fan-page-chat-box {
+    position: fixed;
+    right: 0;
+    display: flex;
+    height: 95vh;
+    width: 40%;
+    align-items: center;
+    justify-content: center;
+    margin-right: 5px;
+    top: 15px;
+}
+
+#fan-page-furia-icon {
+    height: fit-content;
+    width: fit-content;
+}
+
+#fan-page-feed {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start
+    
+
+}
+
+#fan-page-nav {
+    position: fixed;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: rgb(0, 0, 0);
+    color: white;
+    width: 100vw;
+    height: fit-content;
+}
+
+#fan-page-furia-icon {
+    height: 80px;
+}

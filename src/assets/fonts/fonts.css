@@ -2,3 +2,28 @@
     font-family: 'Bebas';
     src: url("./Bebas_Neue/BebasNeue-Regular.ttf");
 }
+
+@font-face {
+    font-family: 'Cinzel';
+    src: url("./Cinzel/Cinzel-VariableFont_wght.ttf");
+}
+
+@font-face {
+    font-family: 'Josefin_Sans_Italic';
+    src: url("./Josefin_Sans/JosefinSans-Italic-VariableFont_wght.ttf");
+}
+
+@font-face {
+    font-family: 'Josefin_Sans';
+    src: url("./Josefin_Sans/JosefinSans-VariableFont_wght.ttf");
+}
+
+@font-face {
+    font-family: 'Lilita_One';
+    src: url("./Lilita_One/LilitaOne-Regular.ttf");
+}
+
+@font-face {
+    font-family: 'Playwrite_RO';
+    src: url("./Playwrite_RO/PlaywriteRO-VariableFont_wght.ttf");
+}
