@@ -1,59 +1,59 @@
 .res-auth-form {
-    display: flex;
-    width: 100%;
-    height: 100%;
-    justify-content: center;
-    padding-top: 100px;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  padding-top: 100px;
 }
 
 .res-auth-title {
-    color: white;
-    margin-bottom: 30px;
-    font-size: 1.5em;
-    margin-top: 10px;
+  color: white;
+  margin-bottom: 30px;
+  font-size: 1.5em;
+  margin-top: 10px;
 }
 
 .res-auth-div {
-    position: fixed;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: fit-content;
-    height: fit-content;
-    background-color: black;
-    opacity: 0.8;
-    padding: 20px;
-    border: 10px solid black;
-    border-radius: 5px;
-    margin-top: 50px;
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: fit-content;
+  height: fit-content;
+  background-color: black;
+  opacity: 0.8;
+  padding: 20px;
+  border: 10px solid black;
+  border-radius: 5px;
+  margin-top: 50px;
 }
 
 .res-auth-input {
-    margin-bottom: 20px;
-    font-size: 1.1em;
-    background-color: lightslategray;
+  margin-bottom: 20px;
+  font-size: 1.1em;
+  background-color: lightslategray;
 }
 
 .res-auth-input::placeholder {
-    color: white;
+  color: white;
 }
 
 .res-auth-submit {
-    background-color: #222;
-    color: white;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    font-size: 1em;
-    border-style: none;
-    padding: 4px 10px;
+  background-color: #222;
+  color: white;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: 1em;
+  border-style: none;
+  padding: 4px 10px;
 }
 
 .res-auth-submit:hover {
-    background-color: #333;
-    cursor: pointer; 
+  background-color: #333;
+  cursor: pointer;
 }
 
 .res-auth-submit:active {
-    background-color: #9fa59f;
-    transform: scale(0.96);
+  background-color: #9fa59f;
+  transform: scale(0.96);
 }
