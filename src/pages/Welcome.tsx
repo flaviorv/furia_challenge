@@ -6,6 +6,7 @@ import Footer from '../components/Footer.tsx';
 import SignupForm from '../components/SignupForm.tsx';
 import LoginForm from '../components/LoginForm.tsx';
 import { ComponentType } from '../utils.ts';
+import Home from '../components/Home.tsx';
 
 export default function Welcome() {
   const [component, setComponent] = useState(ComponentType.Welcome);
@@ -17,6 +18,7 @@ export default function Welcome() {
       <div id="welcome-content">
         {component === ComponentType.Signup ? <SignupForm changeComponent={setComponent} /> : null}
         {component === ComponentType.Login ? <LoginForm /> : null}
+        {component === ComponentType.Welcome ? <Home /> : null}
       </div>
       <Footer />
     </div>

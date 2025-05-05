@@ -15,6 +15,7 @@ type UserInfo = {
 export function getInfoFromToken(): UserInfo | null {
   const token: string | null = localStorage.getItem('furia-jwt');
   if (!token) return null;
+
   try {
     const decoded: DecodedJWT = jwtDecode(token);
     return {

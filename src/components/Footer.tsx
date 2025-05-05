@@ -1,7 +1,5 @@
 import React from 'react';
 import './Footer.css';
-import adidasImg from '../assets/images/logoAdidas.png';
-import futureIsBlackImg from '../assets/images/logoFutureIsBlack.png';
 import soccerImg from '../assets/images/logoSoccer.png';
 import lolImg from '../assets/images/logoLOL.png';
 import csgoImg from '../assets/images/logoCSGO.png';
@@ -22,8 +20,6 @@ export default function Footer() {
       <img className="footer-img" src={lolImg} alt="Logo League of Legends" />
       <img className="footer-img" src={csgoImg} alt="Logo CS GO" />
       <img className="footer-img" src={soccerImg} alt="Logo Kings League" />
-      <img className="footer-img" src={adidasImg} alt="Logo Adidas" />
-      <img className="footer-img" src={futureIsBlackImg} alt="Logo Future is Black" />
     </div>
   );
 }

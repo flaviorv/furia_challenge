@@ -27,18 +27,6 @@
   width: 100px;
 }
 
-#navbar-right a {
-  text-decoration: none;
-  margin-right: 30px;
-  color: wheat;
-}
-
-#navbar-right p:hover,
-#navbar-right a:hover {
-  color: white;
-  cursor: pointer;
-}
-
 #navbar-home-icon {
   width: 40px;
   margin-left: 30px;
@@ -49,14 +37,26 @@
   cursor: pointer;
 }
 
-#navbar-right {
+.navbar-right {
   display: flex;
   align-items: center;
   font-size: 1.2em;
   text-decoration: none;
-  color: wheat;
   font-weight: bolder;
   font-family: Bebas;
   margin-right: 30px;
   gap: 40px;
+  color: rgb(255, 255, 255);
+}
+
+.navbar-right a {
+  text-decoration: none;
+  margin-right: 30px;
+  color: rgb(255, 255, 255);
+}
+
+.navbar-right p:hover,
+.navbar-right a:hover {
+  color: rgb(175, 156, 95);
+  cursor: pointer;
 }

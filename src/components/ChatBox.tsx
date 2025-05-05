@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import axios from 'axios';
 import { useForm, SubmitHandler } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
 import './ChatBox.css';
 import { getInfoFromToken } from '../utils.ts';
 
@@ -16,6 +17,8 @@ type ReceivedMessage = {
 };
 
 export default function ChatBox() {
+  const navigate = useNavigate();
+
   async function getChatMessages() {
     try {
       const token: string | null = localStorage.getItem('furia-jwt');
@@ -37,7 +40,7 @@ export default function ChatBox() {
         return newMessages;
       });
     } catch (error) {
-      console.log(error.status, error.code);
+      navigate('/');
     }
   }
 
@@ -138,7 +141,7 @@ export default function ChatBox() {
         ↓ Novas Mensagens ↓
       </p>
       <form id="furia-chat-form" onSubmit={handleSubmit(onSubmit)}>
-        <input id="furia-chat-input" type="text" placeholder="Escrever mensagem" {...register('message')} />
+        <input id="furia-chat-input" type="text" autoComplete="off" placeholder="Escrever mensagem" {...register('message')} />
         <input id="furia-chat-submit" type="submit" value="➤" />
       </form>
     </div>
