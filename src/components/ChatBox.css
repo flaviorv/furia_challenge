@@ -1,12 +1,11 @@
 #furia-chat-box {
   display: flex;
   flex-direction: column;
-  height: 95vh;
   background-color: rgb(21, 22, 22);
   margin: 0;
   padding: 0;
+  height: 95%;
   width: 100%;
-  overflow-x: hidden;
   overflow: hidden;
   opacity: 0.9;
 }
@@ -21,14 +20,12 @@
   padding: 2px;
   color: #646667;
   background-color: #1c1d1d;
-  height: 40px;
   opacity: 0.9;
 }
 
 #furia-chat-section {
   flex: 1;
   overflow-x: hidden;
-
   overflow-y: scroll;
   background-color: rgb(21, 22, 22);
   min-height: 0;

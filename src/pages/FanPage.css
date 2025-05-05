@@ -1,58 +1,31 @@
-/* #fan-page {
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    justify-content: space-between;
-    background-image: url("../assets/images/wallpaper4.png");
-    gap: 20px;
-    background-size: cover;
-    height: 100vh;
-    overflow: scroll;
-} */
-
 #fan-page {
   display: flex;
   flex-direction: row;
   height: 100vh;
-  overflow: hidden;
+  overflow: auto;
   background-image: url('../assets/images/wallpaper4.png');
   background-size: cover;
   gap: 10px;
-}
-
-#fan-page {
-  display: flex;
   flex-direction: column;
-  overflow: hidden;
-}
-
-#fan-page-feed {
-  flex: 1;
-  height: 200vh;
 }
 
 #fan-page-chat-box {
   position: fixed;
   right: 0;
-  display: flex;
-  height: 95vh;
-  width: 40%;
-  align-items: center;
-  justify-content: center;
-  margin-right: 5px;
-  top: 15px;
+  width: 35%;
+  margin-right: 20px;
+  margin-top: 10px;
+}
+
+#fan-page-feed {
+  position: fixed;
+  left: 20px;
+  width: 60%;
 }
 
 #fan-page-furia-icon {
   height: fit-content;
   width: fit-content;
-}
-
-#fan-page-feed {
-  display: flex;
-  flex-direction: column;
-  justify-content: start;
-  align-items: start;
 }
 
 #fan-page-nav {
@@ -64,10 +37,11 @@
   color: white;
   width: 100vw;
   height: fit-content;
+  z-index: 2;
 }
 
 #fan-page-furia-icon {
-  height: 80px;
+  height: 70px;
 }
 
 .fan-page-dropdown {
@@ -92,7 +66,6 @@
   padding: 10px;
   display: flex;
   flex-direction: column;
-  z-index: 2;
 }
 
 .fan-page-dropdown-button {
@@ -109,34 +82,4 @@
 
 .fan-page-dropdown-button:hover {
   background-color: #444;
-}
-
-#fan-page-feed {
-  width: 60%;
-  height: 100vh;
-  overflow-y: auto;
-  padding-top: 100px; /* espaço pro menu fixo */
-  box-sizing: border-box;
-}
-
-.feed-item {
-  display: flex;
-  background-color: rgba(255, 255, 255, 0.8);
-  margin: 20px;
-  padding: 15px;
-  border-radius: 8px;
-  gap: 20px;
-  align-items: center;
-}
-
-.feed-description {
-  flex: 1;
-  font-family: Arial, sans-serif;
-}
-
-.feed-image {
-  width: 150px;
-  height: 150px;
-  object-fit: cover;
-  border-radius: 6px;
 }

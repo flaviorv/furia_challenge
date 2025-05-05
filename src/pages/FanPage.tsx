@@ -1,12 +1,14 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { getInfoFromToken } from '../utils.ts';
 import ChatBox from '../components/ChatBox.tsx';
-import './FanPage.css';
 import furiaIcon from '../assets/images/furia_icon.png';
+import Feed from '../components/Feed.tsx';
+import './FanPage.css';
 
 export default function FanPage() {
   const user = getInfoFromToken();
   const [isOpen, setIsOpen] = useState(false);
+
   const menuRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -19,9 +21,26 @@ export default function FanPage() {
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
+  const navRef = useRef<HTMLDivElement>(null);
+  const feedRef = useRef<HTMLDivElement>(null);
+  const chatRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (navRef.current && chatRef.current && feedRef.current) {
+      const navHeight = navRef.current.offsetHeight;
+      const availableHeight = window.innerHeight - navHeight;
+
+      feedRef.current.style.marginTop = `${navHeight}px`;
+      feedRef.current.style.height = `${availableHeight}px`;
+
+      chatRef.current.style.top = `${navHeight}px`;
+      chatRef.current.style.height = `${availableHeight}px`;
+    }
+  }, []);
+
   return (
     <div id="fan-page">
-      <nav id="fan-page-nav">
+      <nav id="fan-page-nav" ref={navRef}>
         <img id="fan-page-furia-icon" src={furiaIcon} alt="Ícone da Fúria na barra de navegação" />
         <div className="fan-page-dropdown" ref={menuRef}>
           <span className="fan-page-username" onClick={() => setIsOpen(!isOpen)}>
@@ -39,33 +58,12 @@ export default function FanPage() {
           )}
         </div>
       </nav>
-
-      <div id="fan-page-content">
-        <div id="fan-page-feed">
-          <nav id="fan-page-nav">...</nav>
-          <h1 id="fan-page-title">Feed</h1>
-
-          <div className="feed-item">
-            <div className="feed-description">
-              <h3>Notícia ou conteúdo 1</h3>
-              <p>Texto descritivo sobre o evento ou informação.</p>
-            </div>
-            <img className="feed-image" src="https://via.placeholder.com/150" alt="imagem do conteúdo" />
-          </div>
-
-          <div className="feed-item">
-            <div className="feed-description">
-              <h3>Notícia 2</h3>
-              <p>Mais um texto explicando o conteúdo.</p>
-            </div>
-            <img className="feed-image" src="https://via.placeholder.com/150" alt="imagem do conteúdo" />
-          </div>
-        </div>
-
-        <section id="fan-page-chat-box">
-          <ChatBox />
-        </section>
-      </div>
+      <section id="fan-page-feed" ref={feedRef}>
+        <Feed />
+      </section>
+      <section id="fan-page-chat-box" ref={chatRef}>
+        <ChatBox />
+      </section>
     </div>
   );
 }
