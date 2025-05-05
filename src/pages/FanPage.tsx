@@ -6,11 +6,17 @@ import './FanPage.css';
 import furiaIcon from '../assets/images/furia_icon.png';
 import adidasImg from '../assets/images/logoAdidas.png';
 import futureIsBlackImg from '../assets/images/logoFutureIsBlack.png';
+import Campaign from '../components/Campaign.tsx';
+
+enum Pages {
+  FanPage,
+  Campaign,
+}
 
 export default function FanPage() {
   const user = getInfoFromToken();
   const [isOpen, setIsOpen] = useState(false);
-
+  const [page, setPage] = useState(Pages.FanPage);
   const menuRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -38,7 +44,7 @@ export default function FanPage() {
       chatRef.current.style.top = `${navHeight}px`;
       chatRef.current.style.height = `${availableHeight}px`;
     }
-  }, []);
+  }, [page]);
 
   return (
     <div id="fan-page">
@@ -63,22 +69,31 @@ export default function FanPage() {
           </div>
         </section>
         <section className="navbar-right">
-          <a href="https://www.furia.gg/" target="_blank" rel="noopener noreferrer">
-            🏆 Títulos
+          <a onClick={() => setPage(Pages.FanPage)} target="_blank" rel="noopener noreferrer">
+            👤👥 Comunidade
+          </a>
+          <a onClick={() => setPage(Pages.Campaign)} target="_blank" rel="noopener noreferrer">
+            🏆 Campanhas
           </a>
           <a href="https://www.furia.gg/" target="_blank" rel="noopener noreferrer">
             👕 Loja Oficial
           </a>
-          <img className="footer-img" src={futureIsBlackImg} alt="Logo Future is Black" />
-          <img className="footer-img" src={adidasImg} alt="Logo Adidas" />
+          <img className="footer-img fan-page-nav-img" src={futureIsBlackImg} alt="Logo Future is Black" />
+          <img className="footer-img fan-page-nav-img" src={adidasImg} alt="Logo Adidas" />
         </section>
       </nav>
-      <section id="fan-page-feed" ref={feedRef}>
-        <Feed />
-      </section>
-      <section id="fan-page-chat-box" ref={chatRef}>
-        <ChatBox />
-      </section>
+      {page === Pages.FanPage ? (
+        <>
+          <section id="fan-page-feed" ref={feedRef}>
+            <Feed />
+          </section>
+          <section id="fan-page-chat-box" ref={chatRef}>
+            <ChatBox />
+          </section>
+        </>
+      ) : (
+        <Campaign />
+      )}
     </div>
   );
 }
