@@ -80,7 +80,7 @@ export default function ChatBox() {
     const threshold = 10;
     const atBottom = element.scrollHeight - element.scrollTop - element.clientHeight < threshold;
     setIsAtBottom(atBottom);
-    if (atBottom) {
+    if (atBottom === true) {
       setNewMessagesWarning(false);
     }
   };
@@ -137,9 +137,7 @@ export default function ChatBox() {
           );
         })}
       </section>
-      <p id="furia-chat-new-messages-warning" style={{ visibility: newMessagesWarning ? 'visible' : 'collapse' }}>
-        ↓ Novas Mensagens ↓
-      </p>
+      <p id="furia-chat-new-messages-warning">{newMessagesWarning ? '↓ Novas Mensagens ↓' : 'Digite @Furia para nos enviar uma pergunta.'}</p>
       <form id="furia-chat-form" onSubmit={handleSubmit(onSubmit)}>
         <input id="furia-chat-input" type="text" autoComplete="off" placeholder="Escrever mensagem" {...register('message')} />
         <input id="furia-chat-submit" type="submit" value="➤" />
