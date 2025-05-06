@@ -47,6 +47,47 @@ export default function Campaign() {
           <td class="campaign-td campaign-placement">3º–4º</td>
           <td class="campaign-td campaign-event">Intel Extreme Masters Season XVII - Dallas</td>
         </tr>
+
+        <tr class="campaign-tr">
+          <td class="campaign-td campaign-placement">1º</td>
+          <td class="campaign-td campaign-event">Gamers8 2022</td>
+        </tr>
+        <tr class="campaign-tr">
+          <td class="campaign-td campaign-placement">1º</td>
+          <td class="campaign-td campaign-event">RLCS 2022–23 North American Spring Invitational</td>
+        </tr>
+        <tr class="campaign-tr">
+          <td class="campaign-td campaign-placement">2º</td>
+          <td class="campaign-td campaign-event">RLCS Season X South American Championship</td>
+        </tr>
+        <tr class="campaign-tr">
+          <td class="campaign-td campaign-placement">3º–4º</td>
+          <td class="campaign-td campaign-event">Rocket League Championship Series 2021–22 World Championship</td>
+        </tr>
+        <tr class="campaign-tr">
+          <td class="campaign-td campaign-placement">3º–4º</td>
+          <td class="campaign-td campaign-event">Copa do Mundo de Esports 2024</td>
+        </tr>
+        <tr class="campaign-tr">
+          <td class="campaign-td campaign-placement">5º–8º</td>
+          <td class="campaign-td campaign-event">Blast R6 Major Manchester 2024</td>
+        </tr>
+        <tr class="campaign-tr">
+          <td class="campaign-td campaign-placement">5º–8º</td>
+          <td class="campaign-td campaign-event">Seis Major de Berlim 2022</td>
+        </tr>
+        <tr class="campaign-tr">
+          <td class="campaign-td campaign-placement">9º–12º</td>
+          <td class="campaign-td campaign-event">Six Invitational 2022</td>
+        </tr>
+        <tr class="campaign-tr">
+          <td class="campaign-td campaign-placement">5º–8º</td>
+          <td class="campaign-td campaign-event">Seis Major do México 2022</td>
+        </tr>
+        <tr class="campaign-tr">
+          <td class="campaign-td campaign-placement">9º–12º</td>
+          <td class="campaign-td campaign-event">Six Invitational 2021</td>
+        </tr>
       </tbody>
     </table>
   );

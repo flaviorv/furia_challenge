@@ -88,3 +88,11 @@
 .fan-page-nav-img:hover {
   zoom: 0;
 }
+
+#fan-page-campaign {
+  height: 60%;
+  overflow-y: scroll;
+  margin: auto auto;
+  width: 100vw;
+  scrollbar-width: none;
+}

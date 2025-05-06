@@ -92,7 +92,9 @@ export default function FanPage() {
           </section>
         </>
       ) : (
-        <Campaign />
+        <div id="fan-page-campaign">
+          <Campaign />
+        </div>
       )}
     </div>
   );
