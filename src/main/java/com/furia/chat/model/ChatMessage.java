@@ -57,7 +57,7 @@ public class ChatMessage {
             if (normalized.contains("elenco") || normalized.contains("jogadores") || normalized.contains("time") || normalized.contains("line")) {
                 if (normalized.contains("cs") || normalized.contains("counter")) {
                     return "O elenco atual de CS2 da Fúria inclui: arT, KSCERATO, yuurih, chelo e FalleN.";
-                } else if (normalized.contains("lol") || normalized.contains("league")) {
+                } else if (normalized.contains("lol") || normalized.contains("league of legends")) {
                     return "O elenco de League of Legends da Fúria é formado por: Envy, Tyrin, RedBert, Netuno e Sephis.";
                 } else if (normalized.contains("valorant")) {
                     return "O time de Valorant da Fúria conta com mwzera, Khalil, kon4n, qck e xand.";
