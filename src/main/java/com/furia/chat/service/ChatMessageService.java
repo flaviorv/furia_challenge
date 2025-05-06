@@ -19,12 +19,22 @@ public class ChatMessageService {
         if (message.message() == null || message.message().trim().isEmpty()) {
             throw new IllegalArgumentException("Message should be not empty");
         }
+
+        String answer = ChatMessage.answer(message.message());
+
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         String sender = auth.getName();
         if (auth.getAuthorities().iterator().next().getAuthority().equals("ROLE_ADMIN")) {
             sender = "FURIA";
         }
         ChatMessage filled = new ChatMessage(sender, message.message());
+
+        if(answer != null) {
+            ChatMessage answered = new ChatMessage("FURIA", answer);
+            chatMessageRepository.save(filled);
+            return chatMessageRepository.save(answered);
+        }
+
         return chatMessageRepository.save(filled);
     }
 
