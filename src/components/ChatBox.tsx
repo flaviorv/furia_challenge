@@ -40,6 +40,8 @@ export default function ChatBox() {
         return newMessages;
       });
     } catch (error) {
+      window.alert('Necessário autenticação');
+      localStorage.removeItem('furia-jwt');
       navigate('/');
     }
   }
