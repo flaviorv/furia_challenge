@@ -1,0 +1,24 @@
+#home-div {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  width: 100vw;
+  height: 100vh;
+  padding: 100px 20px 40px;
+  box-sizing: border-box;
+  background-color: black;
+  opacity: 0.9;
+}
+
+#home-p {
+  max-width: 800px;
+  text-align: justify;
+  color: white;
+  font-size: 1.2rem;
+  font-weight: 400;
+  line-height: 1.6;
+  font-family: Arial, sans-serif;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
